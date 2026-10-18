@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TDS Portfolio Showcase | DS24F2001250</title>
+  <meta name="description" content="Tools in Data Science (TDS) Portfolio showcase page by DS24F2001250 (IIT Madras BS in Data Science).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0e17;
+      --bg-card: rgba(18, 24, 38, 0.75);
+      --bg-card-hover: rgba(28, 38, 60, 0.85);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-color-hover: rgba(99, 102, 241, 0.5);
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --primary-glow: rgba(99, 102, 241, 0.25);
+      --secondary: #06b6d4;
+      --accent: #ec4899;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient background glowing orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.35;
+    }
+    .orb-1 {
+      top: -100px;
+      left: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+    }
+    .orb-2 {
+      bottom: -150px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* Header & Hero */
+    header {
+      margin-bottom: 3.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 9999px;
+      color: var(--primary-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #10b981;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 30%, var(--primary-light) 70%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 650px;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* Contact Badge with Email Off */
+    .contact-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      transition: all 0.25s ease;
+    }
+
+    .contact-box:hover {
+      border-color: var(--border-color-hover);
+      box-shadow: 0 12px 32px var(--primary-glow);
+    }
+
+    .contact-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .email-wrapper {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary-light);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .email-wrapper:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* Section Styles */
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border-color) 0%, transparent 100%);
+    }
+
+    /* Grid layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.75rem;
+      backdrop-filter: blur(16px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-color-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 20px var(--primary-glow);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-tag {
+      align-self: flex-start;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--primary-light);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-description {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      color: #cbd5e1;
+    }
+
+    /* Links & Buttons */
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      color: var(--primary-light);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: gap 0.2s ease, color 0.2s ease;
+    }
+
+    .link-btn:hover {
+      color: #ffffff;
+      gap: 0.75rem;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .footer-author {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      .container {
+        padding: 2rem 1rem 4rem;
+      }
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="container">
+    <header>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        IIT Madras • Tools in Data Science
+      </div>
+      <h1>Project Showcase</h1>
+      <p class="subtitle">
+        Curated portfolio of cloud services, automation engines, and data applications built for TDS by student <strong>24f2001250</strong>.
+      </p>
+
+      <!-- Verified Email Tag with Cloudflare De-obfuscation wrapper -->
+      <div class="contact-box" id="contact-info">
+        <span class="contact-label">Student Contact:</span>
+        <a href="mailto:24f2001250@ds.study.iitm.ac.in" class="email-wrapper" id="student-email">
+          <!--email_off-->24f2001250@ds.study.iitm.ac.in<!--/email_off-->
+        </a>
+      </div>
+    </header>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="section-header">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="grid">
+        <!-- Project 1: Config Merger Service -->
+        <article class="card">
+          <div class="card-tag">FastAPI & Cloud Architecture</div>
+          <h3 class="card-title">Config Layer Merger Service</h3>
+          <p class="card-description">
+            A production-ready microservice implementing a 5-tier configuration hierarchy (Defaults, YAML, .env, OS Environment Variables, and dynamic CLI query overrides) with type coercion, secret masking, and CORS support.
+          </p>
+          <div class="card-meta">
+            <span class="tech-pill">FastAPI</span>
+            <span class="tech-pill">Python 3.12</span>
+            <span class="tech-pill">CORS</span>
+            <span class="tech-pill">Vercel</span>
+          </div>
+          <a href="https://iitmtds-chi.vercel.app/effective-config" target="_blank" rel="noopener noreferrer" class="link-btn">
+            View Live API Endpoint &rarr;
+          </a>
+        </article>
+
+        <!-- Project 2: Data Pipeline & Automation -->
+        <article class="card">
+          <div class="card-tag">Data Engineering</div>
+          <h3 class="card-title">Automated Data Pipelines</h3>
+          <p class="card-description">
+            High-throughput data extraction and transformation pipelines built for large-scale datasets, parsing structured and unstructured streams with robust error recovery.
+          </p>
+          <div class="card-meta">
+            <span class="tech-pill">Pandas</span>
+            <span class="tech-pill">NumPy</span>
+            <span class="tech-pill">DuckDB</span>
+            <span class="tech-pill">REST APIs</span>
+          </div>
+          <span class="link-btn" style="color: var(--text-muted); cursor: default;">Data Pipeline Module</span>
+        </article>
+
+        <!-- Project 3: LLM Evaluation & Agent Benchmarks -->
+        <article class="card">
+          <div class="card-tag">AI & Machine Learning</div>
+          <h3 class="card-title">LLM Benchmark & Evaluator</h3>
+          <p class="card-description">
+            Autonomous evaluation harness testing LLM inference behavior, strict prompt adherence, differential responses, and system guardrail verification.
+          </p>
+          <div class="card-meta">
+            <span class="tech-pill">LLM Evaluation</span>
+            <span class="tech-pill">Prompt Engineering</span>
+            <span class="tech-pill">Python</span>
+          </div>
+          <span class="link-btn" style="color: var(--text-muted); cursor: default;">Evaluation Harness</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills">
+      <div class="section-header">
+        <h2 class="section-title">Core Competencies</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <div class="card" style="padding: 1.25rem;">
+          <h4 style="color: #fff; margin-bottom: 0.5rem; font-size: 1rem;">Backend & API Development</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">FastAPI, ASGI, Uvicorn, REST Architecture, Microservices, CORS</p>
+        </div>
+        <div class="card" style="padding: 1.25rem;">
+          <h4 style="color: #fff; margin-bottom: 0.5rem; font-size: 1rem;">DevOps & Deployment</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">GitHub Pages, Vercel, Docker, CI/CD Actions, Serverless</p>
+        </div>
+        <div class="card" style="padding: 1.25rem;">
+          <h4 style="color: #fff; margin-bottom: 0.5rem; font-size: 1rem;">Data Science & Analytics</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Data Cleansing, Feature Engineering, SQL, YAML/JSON Config</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-author">
+        <span>Student ID: <strong>DS24F2001250</strong></span>
+        <span>•</span>
+        <span><!--email_off-->24f2001250@ds.study.iitm.ac.in<!--/email_off--></span>
+      </div>
+      <div>
+        Hosted with GitHub Pages • Tools in Data Science (TDS)
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
